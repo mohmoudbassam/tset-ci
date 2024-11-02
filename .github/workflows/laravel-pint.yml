@@ -1,33 +1,37 @@
 name: Laravel Pint
 on:
-  pull_request:
+  push:
+    branches:
+      - main
 
 
 jobs:
-   no-plans-to-merge:
-     runs-on: ubuntu-latest
-     steps:
-       - name: Create a Comment on the PR
-         uses: actions/checkout@v4.2.2
+  no-plans-to-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create a Comment on the PR
+        uses: actions/checkout@v4.2.2
+        with:
+          ref: ${{ github.head_ref }}
 
-       - name: Setup PHP
-         uses: shivammathur/setup-php@v2
-         with:
-           php-version: '8.3'
-           tools: composer:v2
-
-
-       - name: install laravel pint
-         run: composer global require laravel/pint
-
-       - name: Run Pint
-         run: pint
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer:v2
 
 
-       - name: Push changes back to the PR
-         run: |
-              git config --global user.email "mahmoud14567@gmail.com"
-              git config --global user.name "GitHub Actions"
-              git add .
-              git commit -m "Pint Results"
-              git push
+      - name: install laravel pint
+        run: composer global require laravel/pint
+
+      - name: Run Pint
+        run: pint
+
+
+      - name: Push changes back to the PR
+        run: |
+          git config --global user.email "mahmoud14567@gmail.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Pint Results" || exit 0
+          git push
