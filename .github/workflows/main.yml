@@ -14,11 +14,11 @@ jobs:
        - name: create a comment on PR
          uses: actions/github-script@v7
          with:
-          script: |
-                github.rest.issues.createComment({
-                 issue_number: context.issue.number,
-                 owner: context.repo.owner,
-                 repo: context.repo.repo,
-                 body: '👋 No plans to merge this PR'
-               })
+           script: |
+             github.rest.issues.createComment({
+               issue_number: context.issue.number,
+               owner: context.repo.owner,
+               repo: context.repo.repo,
+               body: '👋 Thanks for reporting!'
+             })
 
