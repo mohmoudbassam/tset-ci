@@ -3,6 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    //random commit
+    //random commit fs
     return view('welcome');
 });
