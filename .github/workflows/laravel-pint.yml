@@ -21,8 +21,13 @@ jobs:
          run: composer global require laravel/pint
 
        - name: Run Pint
-         run: pint --test
+         run: pint
 
 
        - name: Push changes back to the PR
-         run:  echo "Pint has been run on this PR"
+         run: |
+                git config --global user.email "
+                git config --global user.name "GitHub Actions"
+                git add .
+                git commit -m "Pint Results"
+                git push
