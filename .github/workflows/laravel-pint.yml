@@ -26,8 +26,8 @@ jobs:
 
        - name: Push changes back to the PR
          run: |
-                git config --global user.email "
-                git config --global user.name "GitHub Actions"
-                git add .
-                git commit -m "Pint Results"
-                git push
+              git config --global user.email "mahmoud14567@gmail.com"
+              git config --global user.name "GitHub Actions"
+              git add .
+              git commit -m "Pint Results"
+              git push
